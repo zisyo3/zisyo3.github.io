@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>v86</title>
+  <meta charset="utf-8"></meta>
+  <script src="libv86.js"></script>
+</head>
+<body>
+  <div id="screen_container"></div>
+  <script>
+    window.onload = function() {
+      // 3. v86の起動設定
+      var emulator = new V86Starter({
+          wasm_path: "v86.wasm",
+          screen_container: document.getElementById("screen_container"),
+          bios: { url: "bios/seabios.bin" }, 
+          vga_bios: { url: "bios/vgabios.bin" },
+          autostart: true,
+      });
+    };
+  </script>  
+</body>
+</html>
