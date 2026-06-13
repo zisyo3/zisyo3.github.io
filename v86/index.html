@@ -16,6 +16,7 @@
 </head>
 <body>
   <div id="screen_container" ></div>
+  <p id="state">Power:off</p>
   <script type="module">
     import { V86 } from "./libv86.js";
 
@@ -25,9 +26,10 @@
     };
 
     window.onload = function() {
+      var emulator;
       try {
         // 3. v86の起動設定
-        var emulator = new V86({
+        emulator = new V86({
             wasm_path: "v86.wasm",
             screen_container: document.getElementById("screen_container"),
             memory_size: 32 * 1024 * 1024,
@@ -43,6 +45,16 @@
           error.stack +"\n"
         );
       }
+      var stateDisplay = document.getElementById("state");
+      function mainLoop(){
+        if(emulator.is_running() == true){
+          stateDisplay.textContent = "Power:ON";
+        }else{
+          stateDisplay.textContent = "Power:OFF";
+        }
+        requestAnimationFrame(mainLoop);
+      }
+      mainLoop();
     };
   </script>  
 </body>
