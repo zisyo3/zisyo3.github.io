@@ -7,11 +7,12 @@
 </head>
 <body>
   <div id="screen_container" ></div>
-  <script>
+  <script type="module">
+    import { V86 } from "./libv86.js";
     window.onload = function() {
       try {
         // 3. v86の起動設定
-        var emulator = new V86Starter({
+        var emulator = new V86({
             wasm_path: "v86.wasm",
             screen_container: document.getElementById("screen_container"),
             memory_size: 32 * 1024 * 1024,
