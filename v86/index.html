@@ -18,13 +18,13 @@
   <div id="screen_container" ></div>
   <p id="state">Power:off</p>
   <script type="module">
-    import { V86 } from "./libv86.js";
-
+    
     window.onerror = function(message, source, lineno, colno, error) {
       alert("error:\n" + message + "\nline: " + lineno);
       return false;
     };
-
+    import { V86 } from "./libv86.js";
+　
     window.onload = function() {
       var emulator;
       try {
