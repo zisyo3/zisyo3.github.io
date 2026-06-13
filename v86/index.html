@@ -13,7 +13,8 @@
       var emulator = new V86Starter({
           wasm_path: "v86.wasm",
           screen_container: document.getElementById("screen_container"),
-          
+          memory_size: 32 * 1024 * 1024,
+          cdrom: { url: "images/linux.iso" }, 
           bios: { url: "bios/seabios.bin" }, 
           vga_bios: { url: "bios/vgabios.bin" },
           autostart: true,
