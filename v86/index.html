@@ -3,11 +3,24 @@
 <head>
   <title>v86</title>
   <meta charset="utf-8"></meta>
+  <style>
+        #screen_container {
+            width: 640px;
+            height: 400px;
+            background-color: black; /* わかりやすいように背景を黒にする */
+        }
+  </style>
 </head>
 <body>
   <div id="screen_container" ></div>
   <script type="module">
     import { V86 } from "./libv86.js";
+
+    window.onerror = function(message, source, lineno, colno, error) {
+      alert("error:\n" + message + "\nline: " + lineno);
+      return false;
+    };
+
     window.onload = function() {
       try {
         // 3. v86の起動設定
