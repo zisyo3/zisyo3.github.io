@@ -32,12 +32,12 @@
       try {
         // 3. v86の起動設定
         emulator = new V86({
-            wasm_path: "v86.wasm",
+            wasm_path: "/v86/v86.wasm",
             screen_container: document.getElementById("screen_container"),
             memory_size: 32 * 1024 * 1024,
-            cdrom: { url: "images/linux.iso" }, 
-            bios: { url: "bios/seabios.bin" }, 
-            vga_bios: { url: "bios/vgabios.bin" },
+            cdrom: { url: "/v86/images/linux.iso" }, 
+            bios: { url: "/v86/bios/seabios.bin" }, 
+            vga_bios: { url: "/v86/bios/vgabios.bin" },
             autostart: true,
         });
       } catch (error) {
