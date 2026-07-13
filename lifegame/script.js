@@ -9,8 +9,8 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 const LIFE  = 1;
 const DEATH = 0;
 
-let cellWidth  = 100;
-let cellHeight = 100;
+let cellWidth  = 500;
+let cellHeight = 500;
 canvas.width  = cellWidth;
 canvas.height = cellHeight;
 
@@ -34,7 +34,7 @@ let count       = 0;
 init();
 draw();
 setInterval(() => {
-    if(count < 200){
+    if(count < 300){
         updateStart = performance.now();    
         update();
         updateEnd = performance.now();
