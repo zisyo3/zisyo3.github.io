@@ -9,8 +9,8 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 const LIFE  = 1;
 const DEATH = 0;
 
-let cellWidth  = 500;
-let cellHeight = 500;
+let cellWidth  = 1000;
+let cellHeight = 1000;
 canvas.width  = cellWidth;
 canvas.height = cellHeight;
 
@@ -34,7 +34,7 @@ let count       = 0;
 init();
 draw();
 setInterval(() => {
-    if(count < 300){
+    if(count < 1000 || true){
         updateStart = performance.now();    
         update();
         updateEnd = performance.now();
@@ -65,9 +65,9 @@ function init(){
     ctx.fillStyle = "red";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
  
-    //let initFormula = (x,y) => Math.floor(Math.random() * 2);
-    let initFormula = (x,y) => Math.floor(Math.random() *2);
-    //let initFormula = (x,y) => ((x * y) % 67 === 0) ? LIFE : DEATH;
+    let initFormula = (x,y) => ((x % y) % (2) ? LIFE : DEATH);
+    //let initFormula = (x,y) => Math.floor(Math.random() *2);
+    //let initFormula = (x,y) => ((x * y) % 64 === 0) ? LIFE : DEATH;
 
     for(let y=0;y<cellHeight;y++){
         cells[y] = [];
