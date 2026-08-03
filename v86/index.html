@@ -20,6 +20,10 @@
   <p id="state">Power:off</p>
   
   <script type="module">
+    var script = document.createElement('script');
+    script.src="//cdn.jsdelivr.net/npm/eruda";
+    document.body.appendChild(script);
+    script.onload = function () { eruda.init(); }
     
     window.onerror = function(message, source, lineno, colno, error) {
       alert("error:\n" + message + "\nline: " + lineno);
