@@ -20,21 +20,23 @@
   <p id="state">Power:off</p>
   
   <script type="module">
-    var script = document.createElement('script');
-    script.src="//cdn.jsdelivr.net/npm/eruda";
-    document.body.appendChild(script);
-    script.onload = function () { eruda.init(); }
-    
+    import { V86 } from "/v86/libv86.js";
+
     window.onerror = function(message, source, lineno, colno, error) {
       alert("error:\n" + message + "\nline: " + lineno);
       return false;
     };
-    import { V86 } from "/v86/libv86.js";
+    
+    var script = document.createElement('script');
+    script.src = "//cdn.jsdelivr.net/npm/eruda";
+    document.body.appendChild(script);
+    script.onload = function () { 
+      eruda.init(); 
+    };
 
     window.onload = function() {
       var emulator;
       try {
-        // 3. v86の起動設定
         emulator = new V86({
             wasm_path: "/v86/v86.wasm",
             screen_container: document.getElementById("screen_container"),
@@ -44,6 +46,18 @@
             vga_bios: { url: "/v86/bios/vgabios.bin" },
             autostart: true,
         });
+
+        var stateDisplay = document.getElementById("state");
+        function mainLoop(){
+          if(emulator && emulator.is_running() == true){
+            stateDisplay.textContent = "Power:ON";
+          }else{
+            stateDisplay.textContent = "Power:OFF";
+          }
+          requestAnimationFrame(mainLoop);
+        }
+        mainLoop();
+
       } catch (error) {
         alert(
           error.name +"\n" +
@@ -51,16 +65,6 @@
           error.stack +"\n"
         );
       }
-      var stateDisplay = document.getElementById("state");
-      function mainLoop(){
-        if(emulator.is_running() == true){
-          stateDisplay.textContent = "Power:ON";
-        }else{
-          stateDisplay.textContent = "Power:OFF";
-        }
-        requestAnimationFrame(mainLoop);
-      }
-      mainLoop();
     };
   </script>  
 </body>
