@@ -15,18 +15,14 @@
   </style>
   <script src="/v86/coi-serviceworker.js"></script>
   
-  <!-- 🌟 修正ポイント1: Erudaを動的ではなく、ここで直接読み込みます -->
   <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-  <!-- 🌟 修正ポイント2: 読み込んだ直後に初期化を実行しておきます -->
   <script>eruda.init();</script>
 </head>
 <body>
   <div id="screen_container" ></div>
   <p id="state">Power:off</p>
-  
+  <script src = "libv86.js"></script>
   <script type="module">
-    // import文は必ず最上部
-    import { V86 } from "/v86/libv86.js";
 
     window.onerror = function(message, source, lineno, colno, error) {
       alert("error:\n" + message + "\nline: " + lineno);
