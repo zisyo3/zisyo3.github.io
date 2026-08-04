@@ -20,51 +20,10 @@
 </head>
 <body>
   <button id="boot_button">Boot</button>
+  <button id="paste_button">Paste</button>
   <div id="screen_container" ></div>
   <p id="state">Power:off</p>
   <script src = "libv86.js"></script>
-  <script type="module">
-
-    window.onerror = function(message, source, lineno, colno, error) {
-      alert("error:\n" + message + "\nline: " + lineno);
-      return false;
-    };
-
-    window.onload = function() {
-      var emulator;
-      try {
-        // v86の起動設定
-        emulator = new V86({
-            wasm_path: "/v86/v86.wasm",
-            screen_container: document.getElementById("screen_container"),
-            memory_size: 32 * 1024 * 1024,
-            cdrom: { url: "/v86/images/linux.iso" }, 
-            bios: { url: "/v86/bios/seabios.bin" }, 
-            vga_bios: { url: "/v86/bios/vgabios.bin" },
-            filesystem:{ baseurl: "/path/" },
-            network_relay_url:"wss://wisp.mercurywork.shop/",
-            autostart: true,
-        });
-
-        var stateDisplay = document.getElementById("state");
-        function mainLoop(){
-          if(emulator && emulator.is_running() == true){
-            stateDisplay.textContent = "Power:ON";
-          }else{
-            stateDisplay.textContent = "Power:OFF";
-          }
-          requestAnimationFrame(mainLoop);
-        }
-        mainLoop();
-
-      } catch (error) {
-        alert(
-          error.name +"\n" +
-          error.message +"\n" +
-          error.stack +"\n"
-        );
-      }
-    };
-  </script>  
+  <script src = "script.js"></script>  
 </body>
 </html>
