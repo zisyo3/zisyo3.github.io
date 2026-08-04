@@ -10,10 +10,10 @@ window.onload = function() {
           size: 512 * 1024 * 1024, 
           async_storage_browser: true 
         },
-        cdrom: { url: "/v86/images/linux.iso" }, 
-        bios: { url: "/v86/bios/seabios.bin" }, 
-        vga_bios: { url: "/v86/bios/vgabios.bin" },
-        filesystem:{ baseurl: "/path/" },
+        cdrom: { url: "images/linux.iso" }, 
+        bios: { url: "bios/seabios.bin" }, 
+        vga_bios: { url: "bios/vgabios.bin" },
+        /*filesystem:{ baseurl: "path/" },*/
         network_relay_url:"wss://wisp.mercurywork.shop/",
         autostart: true,
     });
