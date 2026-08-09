@@ -105,7 +105,7 @@ function draw(){
     for(let y=0;y<cellHeight;y++){
         for(let x=0;x<cellWidth;x++){
             if(cells[y][x] == LIFE){
-                ctx.fillStyle = "Green";
+                ctx.fillStyle = "#ffffff";
                 ctx.fillRect(x*cellSize,y*cellSize,cellSize,cellSize);
             }
         }
@@ -121,14 +121,10 @@ function update(){
                 cell(y-1,x-1)+cell(y-1,x)+cell(y-1,x+1)+
                 cell(y  ,x-1)+            cell(y  ,x+1)+
                 cell(y+1,x-1)+cell(y+1,x)+cell(y+1,x+1);
-            //life
-            /*return  (sum==3)?LIFE       :
-                    (sum==2)?cells[y][x]:
-                                   DEATH;
-            */
-            return (sum == 3)?LIFE:
-                   (sum == 1||sum == 4)?cells[y][x]:
-                             DEATH;
+            
+            return (sum === 3) ? LIFE :
+                   (sum === 2) ? cells[y][x] :
+                                 DEATH;
 
         })
     );
