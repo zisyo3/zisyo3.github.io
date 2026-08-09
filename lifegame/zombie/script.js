@@ -45,7 +45,7 @@ let sumSumTime     = 0;
 
 let generation      = 0;//世代
 let frameAccumulator= 0;//実行速度を調節するための内部変数
-let gameSpeed       = 150000;//実行速度
+let gameSpeed       = 60;//実行速度
 let csvData         = 0;
 init();
 draw();
