@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <canvas id="game"></canvas>
+    <br>
+    <button type="button"onclick="ev_init=true">Reset</button>
+    <br>
+    <select  id="reset-method">
+        <option value="">Select initialization method--</option>
+        <option value="random">random</option>
+        <option value="file">from file</option>
+    </select>
+    <button id="fileLoad">Open file</button>
+    <button if="spawn" onclick="ev_spawn=true;">Spawn</button>
+    <input type="file" id="fileInput" accept=".csv" style="display: none;">
+    <p id = "performance" style="white-space: pre-wrap;font-family: monospace;"></p>
+    <script src="char.js"></script>
+    <script src="script.js" ></script>
+</body>
+</html>
